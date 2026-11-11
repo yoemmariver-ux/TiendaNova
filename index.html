@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mi Tienda | Productos online</title>
+<meta name="description" content="Elegí tus productos y hacé tu pedido por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <a href="#inicio" class="logo">Mi Tienda</a>
+  <nav>
+    <a href="#inicio">Productos</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+  <button class="cart-btn" id="openCart" type="button" aria-label="Abrir carrito">
+    Carrito <span id="count">0</span>
+  </button>
+</header>
+
+<main>
+  <section id="inicio" class="stage">
+    <h1>Deslizá y elegí lo que más te guste</h1>
+
+    <div class="flow" id="flow" tabindex="0" aria-label="Galería de productos. Usá las flechas del teclado para moverte."></div>
+
+    <div class="info" aria-live="polite">
+      <p class="cat" id="iCat"></p>
+      <h2 id="iName"></h2>
+      <p class="desc" id="iDesc"></p>
+      <p class="price" id="iPrice"></p>
+      <div class="controls">
+        <button class="round" id="prev" type="button" aria-label="Producto anterior">‹</button>
+        <button class="btn" id="add" type="button">Agregar al carrito</button>
+        <button class="round" id="next" type="button" aria-label="Producto siguiente">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <div>
+      <h2>¿Tenés alguna consulta?</h2>
+      <p>Escribinos y te respondemos lo antes posible. Hacemos envíos a todo el país.</p>
+      <ul class="data">
+        <li>WhatsApp: +54 383 000-0000</li>
+        <li>Correo: hola@mitienda.com</li>
+        <li>Atención: lunes a sábado, de 9 a 18 hs</li>
+      </ul>
+    </div>
+    <form id="contactForm">
+      <label>Nombre <input name="nombre" required autocomplete="name"></label>
+      <label>Mensaje <textarea name="mensaje" rows="4" required></textarea></label>
+      <button class="btn" type="submit">Enviar por WhatsApp</button>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">© 2026 Mi Tienda. Todos los derechos reservados.</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cart" aria-hidden="true" aria-label="Carrito de compras">
+  <div class="drawer-head">
+    <h2>Tu carrito</h2>
+    <button class="round" id="closeCart" type="button" aria-label="Cerrar carrito">×</button>
+  </div>
+  <ul id="items"></ul>
+  <div class="drawer-foot">
+    <p class="total">Total <strong id="total">$0</strong></p>
+    <button class="btn" id="checkout" type="button">Pedir por WhatsApp</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
