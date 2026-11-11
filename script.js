@@ -25,13 +25,14 @@ const products = [
   { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12), mp: "" },
 
   // ----- Indumentaria Estilo Bakano -----
-  // Las fotos van en la carpeta img del repositorio. El nombre debe coincidir EXACTO con el del archivo.
+  // Las fotos están en la carpeta img/indumentaria-estilobakano/. El nombre debe coincidir EXACTO con el del archivo.
   // Cambiá nombres, precios y descripciones por los reales.
   // rating: 0 y reviews: 0 ocultan las estrellas (poné valores reales solo cuando tengan opiniones reales).
-  { id: 13, name: "Remera Oversize Negra", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Algodón peinado, corte holgado y estampa frontal. Disponible en varios talles.", img: "img/remera-oversize-negra.jpg", mp: "" },
-  { id: 14, name: "Buzo Canguro Estilo Bakano", cat: "Indumentaria Estilo Bakano", price: 32900, old: 32900, rating: 0, reviews: 0, free: false, desc: "Frisa invisible, capucha doble y bolsillo canguro.", img: "img/buzo-canguro.jpg", mp: "" },
-  { id: 15, name: "Jean Cargo", cat: "Indumentaria Estilo Bakano", price: 38900, old: 38900, rating: 0, reviews: 0, free: false, desc: "Tiro medio, bolsillos laterales y calce relajado.", img: "img/jean-cargo.jpg", mp: "" },
-  { id: 16, name: "Gorra Bakano", cat: "Indumentaria Estilo Bakano", price: 9900, old: 9900, rating: 0, reviews: 0, free: false, desc: "Visera curva, regulable y con bordado frontal.", img: "img/gorra-bakano.jpg", mp: "" }
+  { id: 13, name: "Remera Blanca", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-blanca.jpg", mp: "" },
+  { id: 14, name: "Remera Negra", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-negra.jpg", mp: "" },
+  { id: 15, name: "Remera Negra 2", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-negra-2.jpg", mp: "" },
+  { id: 16, name: "Remera Negra 3", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-negra-3.jpg", mp: "" },
+  { id: 17, name: "Remera Negra 4", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-negra-4.jpg", mp: "" }
 ];
 const slides = [
   { t: "Ofertas de primavera", p: "Hasta 40 % de descuento en audio, hogar y tecnología.", cta: "Ver ofertas", href: "#ofertas", img: "https://picsum.photos/seed/banner-1/1600/600" },
