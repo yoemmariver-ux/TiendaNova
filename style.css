@@ -235,7 +235,7 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 /* ========================================================
-   MODIFICACIÓN: Logo más grande y sin fondo blanco (transparente)
+   MODIFICACIÓN DEFINITIVA: Logo animado grande y sin fondo blanco
    ======================================================== */
 .logo-link {
   display: flex;
@@ -244,13 +244,14 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 .logo-video {
-  height: 65px; /* Aumentado para que se vea mucho más grande y claro */
+  height: 85px;              /* Video más grande y destacado */
   width: auto;
-  border-radius: 0px;
   object-fit: contain;
-  background: transparent; /* Quitamos el fondo blanco */
-  mix-blend-mode: screen;  /* Hace que el fondo negro/oscuro del video desaparezca contra el rojo */
+  background: transparent;   /* Sin fondo */
+  mix-blend-mode: multiply;  /* Elimina el fondo blanco del video sobre el fondo rojo */
+  filter: contrast(120%) brightness(102%); /* Realza el logo */
   padding: 0;
+  margin: -5px 0;
 }
 
 .foot-brand {
@@ -260,15 +261,15 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 .foot-logo {
-  max-width: 170px; /* Logo del pie más grande */
+  max-width: 170px;
   height: auto;
   border-radius: 4px;
-  background: #fff;  /* En el pie de página negro queda bien que tenga un fondito prolijo */
+  background: #fff;
   padding: 6px;
 }
 
 .receipt-logo {
-  max-width: 180px; /* Logo del comprobante más grande */
+  max-width: 180px;
   height: auto;
   margin-bottom: .5rem;
   display: block;
