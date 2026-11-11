@@ -11,20 +11,26 @@ button{font:inherit;cursor:pointer}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
-/* Encabezado */
-.top{position:sticky;top:0;z-index:20;background:var(--brand);box-shadow:var(--shadow);border-bottom:3px solid #111}
-.bar{display:flex;align-items:center;gap:1rem;max-width:1200px;margin:0 auto;padding:.7rem 1rem}
-.logo{font-weight:800;font-size:1.5rem;text-decoration:none;white-space:nowrap;color:#fff}
-.search{flex:1;display:flex;background:var(--white);border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
-.search input{flex:1;min-width:0;border:0;padding:.7rem 1rem;font:inherit;outline:none}
+/* Encabezado con Fondo Blanco */
+.top{position:sticky;top:0;z-index:20;background:var(--white);box-shadow:var(--shadow);border-bottom:2px solid var(--line)}
+.bar{display:flex;align-items:center;gap:1rem;max-width:1200px;margin:0 auto;padding:.5rem 1rem}
+.logo{font-weight:800;font-size:1.5rem;text-decoration:none;white-space:nowrap;color:var(--ink)}
+
+/* Buscador con bordes claros para fondo blanco */
+.search{flex:1;display:flex;background:#f5f5f5;border:1px solid #ddd;border-radius:6px;box-shadow:none;overflow:hidden}
+.search input{flex:1;min-width:0;border:0;padding:.7rem 1rem;font:inherit;outline:none;background:transparent}
 .search button{border:0;border-left:1px solid var(--line);background:var(--white);padding:0 1rem;color:#555}
-.search:focus-within{outline:3px solid #fff}
-.cart-btn{position:relative;border:0;background:transparent;color:#fff;padding:.3rem}
+.search:focus-within{outline:2px solid var(--brand);background:var(--white)}
+
+/* Botón del Carrito */
+.cart-btn{position:relative;border:0;background:transparent;color:var(--ink);padding:.3rem}
 .cart-btn span{position:absolute;top:-4px;right:-6px;min-width:1.25rem;height:1.25rem;display:grid;place-items:center;
-  background:#111;color:var(--white);border-radius:999px;font-size:.75rem;font-weight:700}
+  background:var(--brand);color:var(--white);border-radius:999px;font-size:.75rem;font-weight:700}
+
+/* Submenú de Navegación */
 .sub{display:flex;gap:1.4rem;max-width:1200px;margin:0 auto;padding:0 1rem .55rem;overflow-x:auto;white-space:nowrap;font-size:.9rem}
-.sub a{text-decoration:none;color:rgba(255,255,255,.92)}
-.sub a:hover{color:#fff;text-decoration:underline}
+.sub a{text-decoration:none;color:#444;font-weight:500}
+.sub a:hover{color:var(--brand);text-decoration:underline}
 
 main{max-width:1200px;margin:0 auto;padding:1rem}
 .block{background:var(--white);border-radius:6px;box-shadow:var(--shadow);padding:1.25rem;margin-top:1rem}
@@ -235,7 +241,7 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 /* ========================================================
-   MODIFICACIÓN DEFINITIVA: Logo animado grande y sin fondo blanco
+   LOGO ANIMADO EN CABECERA BLANCA (Sin bordes ni artefactos)
    ======================================================== */
 .logo-link {
   display: flex;
@@ -244,14 +250,12 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 .logo-video {
-  height: 85px;              /* Video más grande y destacado */
+  height: 75px;
   width: auto;
   object-fit: contain;
-  background: transparent;   /* Sin fondo */
-  mix-blend-mode: multiply;  /* Elimina el fondo blanco del video sobre el fondo rojo */
-  filter: contrast(120%) brightness(102%); /* Realza el logo */
+  background: transparent;
   padding: 0;
-  margin: -5px 0;
+  margin: -6px 0;
 }
 
 .foot-brand {
