@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mi Tienda | Ofertas, cuotas y envío gratis</title>
+<title>Tienda Nova | Ofertas, cuotas y envío gratis</title>
 <meta name="theme-color" content="#D90429">
 <meta name="description" content="Comprá online con envío gratis y 12 cuotas sin interés. Hacé tu pedido por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +15,14 @@
 
 <header class="top">
   <div class="bar">
-    <a class="logo" href="#inicio">Mi Tienda</a>
+    <!-- Video Animado en el Encabezado -->
+    <a class="logo-link" href="#inicio" aria-label="Tienda Nova - Inicio">
+      <video class="logo-video" autoplay loop muted playsinline poster="img/logo.jpg">
+        <source src="img/logo.mp4" type="video/mp4">
+        <img src="img/logo.jpg" alt="Tienda Nova">
+      </video>
+    </a>
+
     <form class="search" id="searchForm" role="search">
       <input id="q" type="search" placeholder="Buscar productos y categorías" aria-label="Buscar productos">
       <button type="submit" aria-label="Buscar">
@@ -95,7 +102,7 @@
       <p>Escribinos y te respondemos lo antes posible. Hacemos envíos a todo el país.</p>
       <ul class="data">
         <li>WhatsApp: +54 383 000-0000</li>
-        <li>Correo: hola@mitienda.com</li>
+        <li>Correo: hola@tiendanova.com</li>
         <li>Atención: lunes a sábado, de 9 a 18 hs</li>
       </ul>
     </div>
@@ -108,8 +115,8 @@
 </main>
 
 <footer class="foot">
-  <div>
-    <strong>Mi Tienda</strong>
+  <div class="foot-brand">
+    <img src="img/logo.jpg" alt="Tienda Nova" class="foot-logo">
     <p>Tu tienda online de confianza.</p>
   </div>
   <div>
@@ -120,7 +127,7 @@
     <strong>Ayuda</strong>
     <a href="#contacto">Contacto</a><span>Cambios y devoluciones</span><span>Formas de pago</span>
   </div>
-  <p class="copy">© 2026 Mi Tienda. Todos los derechos reservados.</p>
+  <p class="copy">© 2026 Tienda Nova. Todos los derechos reservados.</p>
 </footer>
 
 <dialog id="modal" aria-label="Detalle del producto"></dialog>

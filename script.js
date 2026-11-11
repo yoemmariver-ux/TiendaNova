@@ -1,14 +1,9 @@
 /* ====== CONFIGURACIÓN: editá estos datos ====== */
 const WHATSAPP = "5493830000000"; // código de país + código de área + número, sin + ni espacios
-const STORE = "Mi Tienda";
+const STORE = "Tienda Nova";
 const FREE_SHIPPING = 50000;      // monto desde el cual el envío es gratis
 const CUOTAS = 12;
 
-// Productos de ejemplo. Para agregar uno, copiá una línea y cambiá los datos.
-// "old" es el precio anterior (si no hay descuento, poné el mismo precio).
-// Las imágenes de picsum.photos son aleatorias; reemplazalas por tus fotos (ej: "img/auriculares.jpg").
-// Link de pago de Mercado Pago de cada producto: pegalo en el campo mp, por ejemplo mp: "https://mpago.la/xxxxxxx".
-// Mientras el campo esté vacío, el botón "Pagar con Mercado Pago" no se muestra.
 const img = n => "https://picsum.photos/seed/tienda-" + n + "/640/640";
 const products = [
   { id: 1,  name: "Auriculares Bluetooth Pulse",  cat: "Audio",       price: 48900, old: 69900, rating: 4.7, reviews: 1280, free: true,  feat: true, desc: "Inalámbricos, con 30 horas de batería, cancelación de ruido y micrófono incluido.", img: img(1), mp: "" },
@@ -25,9 +20,6 @@ const products = [
   { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12), mp: "" },
 
   // ----- Indumentaria Estilo Bakano -----
-  // Las fotos están en la carpeta img/indumentaria-estilobakano/. El nombre debe coincidir EXACTO con el del archivo.
-  // Cambiá nombres, precios y descripciones por los reales.
-  // rating: 0 y reviews: 0 ocultan las estrellas (poné valores reales solo cuando tengan opiniones reales).
   { id: 13, name: "Remera Blanca", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-blanca.jpg", mp: "" },
   { id: 14, name: "Remera Negra", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-negra.jpg", mp: "" },
   { id: 15, name: "Remera Negra 2", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Remera Estilo Bakano. Consultá talles y disponibilidad por WhatsApp.", img: "img/indumentaria-estilobakano/remera-negra-2.jpg", mp: "" },
@@ -39,7 +31,6 @@ const slides = [
   { t: "12 cuotas sin interés", p: "En todos los productos, con tarjeta de crédito.", cta: "Ver productos", href: "#productos", img: "https://picsum.photos/seed/banner-2/1600/600" },
   { t: "Envío gratis en todo el país", p: "En compras desde $50.000. Llegamos hasta tu casa.", cta: "Elegir productos", href: "#destacados", img: "https://picsum.photos/seed/banner-3/1600/600" }
 ];
-/* ================================================ */
 
 const $ = s => document.querySelector(s);
 const money = n => n.toLocaleString("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
@@ -52,7 +43,6 @@ let cart = {};
 try { cart = JSON.parse(localStorage.getItem("cart") || "{}"); } catch (e) { cart = {}; }
 const save = () => { try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (e) {} };
 
-/* Si una foto no carga (por ejemplo, todavía no la subiste), se muestra un cuadro gris */
 const PLACEHOLDER = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#ececec"/><text x="200" y="205" font-family="sans-serif" font-size="22" fill="#888" text-anchor="middle">Foto próximamente</text></svg>');
 document.addEventListener("error", e => {
   const t = e.target;
@@ -128,7 +118,6 @@ $("#searchForm").addEventListener("submit", e => {
   $("#productos").scrollIntoView();
 });
 
-/* Cuenta regresiva: las ofertas "terminan" a medianoche */
 function tick() {
   const n = new Date(), end = new Date(n); end.setHours(24, 0, 0, 0);
   const s = Math.floor((end - n) / 1000), z = v => String(v).padStart(2, "0");
@@ -201,7 +190,6 @@ modal.addEventListener("click", e => {
   if (buy) { add(buy.dataset.buy, true); modal.close(); openCart(true); }
 });
 
-/* Clics en tarjetas (grilla y ofertas) */
 document.addEventListener("click", e => {
   const o = e.target.closest("[data-open]"); if (o) return openDetail(o.dataset.open);
   const a = e.target.closest(".card [data-add], dialog [data-add]"); if (a) add(a.dataset.add);
@@ -260,7 +248,7 @@ function sendWhatsApp(text) {
   window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
 }
 
-/* ---------- Comprobante de compra (no es una factura) ---------- */
+/* ---------- Comprobante de compra ---------- */
 const receipt = $("#receipt");
 let order = null;
 
@@ -283,7 +271,7 @@ $("#checkout").addEventListener("click", () => {
 function showReceipt() {
   const when = order.date.toLocaleString("es-AR", { dateStyle: "long", timeStyle: "short" });
   receipt.innerHTML = `<div class="rc">
-    <h2>${STORE}</h2>
+    <img src="img/logo.jpg" alt="${STORE}" class="receipt-logo">
     <p class="muted">Comprobante de compra N.º ${order.n}</p>
     <p class="muted">${when}</p>
     <table>
