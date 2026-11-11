@@ -7,20 +7,22 @@ const CUOTAS = 12;
 // Productos de ejemplo. Para agregar uno, copiá una línea y cambiá los datos.
 // "old" es el precio anterior (si no hay descuento, poné el mismo precio).
 // Las imágenes de picsum.photos son aleatorias; reemplazalas por tus fotos (ej: "img/auriculares.jpg").
+// Link de pago de Mercado Pago de cada producto: pegalo en el campo mp, por ejemplo mp: "https://mpago.la/xxxxxxx".
+// Mientras el campo esté vacío, el botón "Pagar con Mercado Pago" no se muestra.
 const img = n => "https://picsum.photos/seed/tienda-" + n + "/640/640";
 const products = [
-  { id: 1,  name: "Auriculares Bluetooth Pulse",  cat: "Audio",       price: 48900, old: 69900, rating: 4.7, reviews: 1280, free: true,  feat: true, desc: "Inalámbricos, con 30 horas de batería, cancelación de ruido y micrófono incluido.", img: img(1) },
-  { id: 2,  name: "Mochila Urbana Impermeable",   cat: "Accesorios",  price: 32500, old: 41900, rating: 4.5, reviews: 860,  free: true,  feat: true, desc: "Resistente al agua, con lugar para notebook de 15 pulgadas y puerto USB.", img: img(2) },
-  { id: 3,  name: "Botella Térmica 750 ml",       cat: "Hogar",       price: 18900, old: 18900, rating: 4.8, reviews: 2310, free: false, desc: "Mantiene el frío 24 horas y el calor 12 horas. Acero inoxidable.", img: img(3) },
-  { id: 4,  name: "Lámpara LED de Escritorio",    cat: "Hogar",       price: 21400, old: 29900, rating: 4.4, reviews: 410,  free: false, desc: "Luz regulable en tres tonos, con base de carga inalámbrica para el celular.", img: img(4) },
-  { id: 5,  name: "Zapatillas Aire",              cat: "Calzado",     price: 67800, old: 89900, rating: 4.6, reviews: 1950, free: true,  feat: true, desc: "Livianas y cómodas, ideales para caminar todo el día.", img: img(5) },
-  { id: 6,  name: "Parlante Bluetooth Mini",      cat: "Audio",       price: 25900, old: 38900, rating: 4.3, reviews: 740,  free: false, feat: true, desc: "Resistente al agua, 12 horas de música y sonido potente.", img: img(6) },
-  { id: 7,  name: "Smartwatch Fit",               cat: "Tecnología",  price: 54900, old: 79900, rating: 4.5, reviews: 1120, free: true,  feat: true, desc: "Mide pasos, sueño y ritmo cardíaco. Recibí notificaciones en la muñeca.", img: img(7) },
-  { id: 8,  name: "Teclado Mecánico Compacto",    cat: "Tecnología",  price: 39900, old: 52900, rating: 4.6, reviews: 530,  free: false, desc: "Switches rojos, retroiluminado y conexión por cable o Bluetooth.", img: img(8) },
-  { id: 9,  name: "Cargador Rápido 30 W",         cat: "Tecnología",  price: 12900, old: 12900, rating: 4.7, reviews: 3020, free: false, desc: "Carga tu celular al 50 % en 30 minutos. Incluye cable USB-C.", img: img(9) },
-  { id: 10, name: "Riñonera Compacta",            cat: "Accesorios",  price: 14500, old: 19900, rating: 4.2, reviews: 290,  free: false, desc: "Tres compartimentos con cierre y correa ajustable.", img: img(10) },
-  { id: 11, name: "Set de Sartenes x3 Antiadherentes", cat: "Hogar",  price: 44900, old: 62900, rating: 4.6, reviews: 970,  free: false, desc: "Aptas para todas las cocinas, incluida la inducción. Mango de silicona.", img: img(11) },
-  { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12) }
+  { id: 1,  name: "Auriculares Bluetooth Pulse",  cat: "Audio",       price: 48900, old: 69900, rating: 4.7, reviews: 1280, free: true,  feat: true, desc: "Inalámbricos, con 30 horas de batería, cancelación de ruido y micrófono incluido.", img: img(1), mp: "" },
+  { id: 2,  name: "Mochila Urbana Impermeable",   cat: "Accesorios",  price: 32500, old: 41900, rating: 4.5, reviews: 860,  free: true,  feat: true, desc: "Resistente al agua, con lugar para notebook de 15 pulgadas y puerto USB.", img: img(2), mp: "" },
+  { id: 3,  name: "Botella Térmica 750 ml",       cat: "Hogar",       price: 18900, old: 18900, rating: 4.8, reviews: 2310, free: false, desc: "Mantiene el frío 24 horas y el calor 12 horas. Acero inoxidable.", img: img(3), mp: "" },
+  { id: 4,  name: "Lámpara LED de Escritorio",    cat: "Hogar",       price: 21400, old: 29900, rating: 4.4, reviews: 410,  free: false, desc: "Luz regulable en tres tonos, con base de carga inalámbrica para el celular.", img: img(4), mp: "" },
+  { id: 5,  name: "Zapatillas Aire",              cat: "Calzado",     price: 67800, old: 89900, rating: 4.6, reviews: 1950, free: true,  feat: true, desc: "Livianas y cómodas, ideales para caminar todo el día.", img: img(5), mp: "" },
+  { id: 6,  name: "Parlante Bluetooth Mini",      cat: "Audio",       price: 25900, old: 38900, rating: 4.3, reviews: 740,  free: false, feat: true, desc: "Resistente al agua, 12 horas de música y sonido potente.", img: img(6), mp: "" },
+  { id: 7,  name: "Smartwatch Fit",               cat: "Tecnología",  price: 54900, old: 79900, rating: 4.5, reviews: 1120, free: true,  feat: true, desc: "Mide pasos, sueño y ritmo cardíaco. Recibí notificaciones en la muñeca.", img: img(7), mp: "" },
+  { id: 8,  name: "Teclado Mecánico Compacto",    cat: "Tecnología",  price: 39900, old: 52900, rating: 4.6, reviews: 530,  free: false, desc: "Switches rojos, retroiluminado y conexión por cable o Bluetooth.", img: img(8), mp: "" },
+  { id: 9,  name: "Cargador Rápido 30 W",         cat: "Tecnología",  price: 12900, old: 12900, rating: 4.7, reviews: 3020, free: false, desc: "Carga tu celular al 50 % en 30 minutos. Incluye cable USB-C.", img: img(9), mp: "" },
+  { id: 10, name: "Riñonera Compacta",            cat: "Accesorios",  price: 14500, old: 19900, rating: 4.2, reviews: 290,  free: false, desc: "Tres compartimentos con cierre y correa ajustable.", img: img(10), mp: "" },
+  { id: 11, name: "Set de Sartenes x3 Antiadherentes", cat: "Hogar",  price: 44900, old: 62900, rating: 4.6, reviews: 970,  free: false, desc: "Aptas para todas las cocinas, incluida la inducción. Mango de silicona.", img: img(11), mp: "" },
+  { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12), mp: "" }
 ];
 const slides = [
   { t: "Ofertas de primavera", p: "Hasta 40 % de descuento en audio, hogar y tecnología.", cta: "Ver ofertas", href: "#ofertas", img: "https://picsum.photos/seed/banner-1/1600/600" },
@@ -172,6 +174,7 @@ function openDetail(id) {
       <div class="acts">
         <button class="btn" data-buy="${p.id}">Comprar ahora</button>
         <button class="btn alt" data-add="${p.id}">Agregar al carrito</button>
+        ${p.mp ? `<a class="btn mp" href="${p.mp}" target="_blank" rel="noopener">Pagar con Mercado Pago</a>` : ""}
       </div></div></div>`;
   modal.showModal();
 }
@@ -239,13 +242,55 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") openCart(fal
 function sendWhatsApp(text) {
   window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
 }
+/* ---------- Comprobante de compra (no es una factura) ---------- */
+const receipt = $("#receipt");
+let order = null;
+
 $("#checkout").addEventListener("click", () => {
-  let total = 0;
-  const lines = Object.keys(cart).map(id => {
-    const p = byId(id), q = cart[id]; total += p.price * q;
-    return "• " + q + " × " + p.name + " (" + money(p.price * q) + ")";
+  const items = Object.keys(cart).filter(id => cart[id] > 0 && byId(id)).map(id => {
+    const p = byId(id);
+    return { name: p.name, qty: cart[id], price: p.price };
   });
-  sendWhatsApp("Hola, quiero hacer este pedido en " + STORE + ":\n" + lines.join("\n") + "\nTotal: " + money(total));
+  if (!items.length) return;
+  order = {
+    n: "P-" + Date.now().toString(36).toUpperCase().slice(-6),
+    date: new Date(),
+    items,
+    total: items.reduce((t, i) => t + i.price * i.qty, 0)
+  };
+  openCart(false);
+  showReceipt();
+});
+
+function showReceipt() {
+  const when = order.date.toLocaleString("es-AR", { dateStyle: "long", timeStyle: "short" });
+  receipt.innerHTML = `<div class="rc">
+    <h2>${STORE}</h2>
+    <p class="muted">Comprobante de compra N.º ${order.n}</p>
+    <p class="muted">${when}</p>
+    <table>
+      <thead><tr><th>Producto</th><th>Cant.</th><th>Precio</th><th>Subtotal</th></tr></thead>
+      <tbody>${order.items.map(i => `<tr><td>${i.name}</td><td>${i.qty}</td><td>${money(i.price)}</td><td>${money(i.price * i.qty)}</td></tr>`).join("")}</tbody>
+    </table>
+    <p class="rtotal">Total <strong>${money(order.total)}</strong></p>
+    <p class="muted small">Este comprobante es solo un detalle de tu compra y no reemplaza a la factura.</p>
+    <div class="acts no-print">
+      <button class="btn" type="button" data-send>Enviar pedido por WhatsApp</button>
+      <button class="btn alt" type="button" data-print>Imprimir o guardar como PDF</button>
+      <button class="btn alt" type="button" data-close>Cerrar</button>
+    </div></div>`;
+  receipt.showModal();
+}
+
+receipt.addEventListener("click", e => {
+  if (e.target === receipt || e.target.closest("[data-close]")) receipt.close();
+  if (e.target.closest("[data-print]")) window.print();
+  if (e.target.closest("[data-send]")) {
+    const lines = order.items.map(i => "• " + i.qty + " × " + i.name + " (" + money(i.price * i.qty) + ")");
+    sendWhatsApp("Hola, quiero hacer este pedido en " + STORE + " (N.º " + order.n + "):\n" + lines.join("\n") + "\nTotal: " + money(order.total));
+    cart = {}; save(); renderCart();
+    toast("Pedido enviado. ¡Gracias por tu compra!");
+  }
 });
 $("#contactForm").addEventListener("submit", e => {
   e.preventDefault();

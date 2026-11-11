@@ -214,3 +214,23 @@ form .btn{justify-self:start}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;scroll-behavior:auto!important}
 }
+
+/* Botones tipo enlace y comprobante de compra */
+a.btn{text-decoration:none;text-align:center;display:block}
+#receipt{width:min(560px,calc(100% - 2rem));max-height:calc(100dvh - 1.5rem);overflow-y:auto}
+.rc{padding:1.5rem}
+.rc h2{font-size:1.5rem;font-weight:800}
+.rc .muted{color:var(--muted);font-size:.9rem}
+.rc .small{font-size:.8rem;margin-top:.8rem}
+.rc table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.92rem}
+.rc th,.rc td{padding:.5rem .4rem;border-bottom:1px solid var(--line);text-align:right}
+.rc th:first-child,.rc td:first-child{text-align:left}
+.rtotal{display:flex;justify-content:space-between;font-size:1.3rem}
+.rc .acts{display:grid;gap:.6rem;margin-top:1rem}
+@media (max-width:760px){.rc{padding:1rem}.rc table{font-size:.8rem}}
+@media print{
+  body>*:not(#receipt){display:none!important}
+  #receipt{position:static!important;width:100%;max-height:none;box-shadow:none}
+  #receipt::backdrop{display:none}
+  .no-print{display:none!important}
+}
