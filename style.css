@@ -234,7 +234,9 @@ a.btn{text-decoration:none;text-align:center;display:block}
   .no-print{display:none!important}
 }
 
-/* ---------- Estilos para Logo Video y Logo Imagen ---------- */
+/* ========================================================
+   MODIFICACIÓN: Logo más grande y sin fondo blanco (transparente)
+   ======================================================== */
 .logo-link {
   display: flex;
   align-items: center;
@@ -242,12 +244,13 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 .logo-video {
-  height: 48px;
+  height: 65px; /* Aumentado para que se vea mucho más grande y claro */
   width: auto;
-  border-radius: 6px;
+  border-radius: 0px;
   object-fit: contain;
-  background: #fff;
-  padding: 2px;
+  background: transparent; /* Quitamos el fondo blanco */
+  mix-blend-mode: screen;  /* Hace que el fondo negro/oscuro del video desaparezca contra el rojo */
+  padding: 0;
 }
 
 .foot-brand {
@@ -257,15 +260,15 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 .foot-logo {
-  max-width: 140px;
+  max-width: 170px; /* Logo del pie más grande */
   height: auto;
-  border-radius: 6px;
-  background: #fff;
-  padding: 4px;
+  border-radius: 4px;
+  background: #fff;  /* En el pie de página negro queda bien que tenga un fondito prolijo */
+  padding: 6px;
 }
 
 .receipt-logo {
-  max-width: 160px;
+  max-width: 180px; /* Logo del comprobante más grande */
   height: auto;
   margin-bottom: .5rem;
   display: block;
