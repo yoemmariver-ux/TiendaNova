@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mi Tienda | Productos online</title>
-<meta name="description" content="Elegí tus productos y hacé tu pedido por WhatsApp.">
+<title>Mi Tienda | Ofertas, cuotas y envío gratis</title>
+<meta name="description" content="Comprá online con envío gratis y 12 cuotas sin interés. Hacé tu pedido por WhatsApp.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -13,36 +13,82 @@
 <body>
 
 <header class="top">
-  <a href="#inicio" class="logo">Mi Tienda</a>
-  <nav>
-    <a href="#inicio">Productos</a>
+  <div class="bar">
+    <a class="logo" href="#inicio">Mi Tienda</a>
+    <form class="search" id="searchForm" role="search">
+      <input id="q" type="search" placeholder="Buscar productos y categorías" aria-label="Buscar productos">
+      <button type="submit" aria-label="Buscar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+      </button>
+    </form>
+    <button class="cart-btn" id="openCart" type="button" aria-label="Abrir carrito">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11l2-8H6"/></svg>
+      <span id="count">0</span>
+    </button>
+  </div>
+  <nav class="sub">
+    <a href="#categorias">Categorías</a>
+    <a href="#ofertas">Ofertas del día</a>
+    <a href="#destacados">Destacados</a>
+    <a href="#productos">Todos los productos</a>
     <a href="#contacto">Contacto</a>
   </nav>
-  <button class="cart-btn" id="openCart" type="button" aria-label="Abrir carrito">
-    Carrito <span id="count">0</span>
-  </button>
 </header>
 
-<main>
-  <section id="inicio" class="stage">
-    <h1>Deslizá y elegí lo que más te guste</h1>
+<main id="inicio">
+  <section class="hero" id="hero" aria-label="Promociones"></section>
 
-    <div class="flow" id="flow" tabindex="0" aria-label="Galería de productos. Usá las flechas del teclado para moverte."></div>
+  <section class="perks" aria-label="Beneficios">
+    <div><strong>Envío gratis</strong><span>En compras desde $50.000</span></div>
+    <div><strong>12 cuotas sin interés</strong><span>Con tarjeta de crédito</span></div>
+    <div><strong>Compra protegida</strong><span>Si algo sale mal, te ayudamos</span></div>
+  </section>
 
+  <section id="categorias" class="block">
+    <h2>Categorías</h2>
+    <div class="cats" id="cats"></div>
+  </section>
+
+  <section id="ofertas" class="block">
+    <div class="head">
+      <h2>Ofertas del día</h2>
+      <p class="timer">Terminan en <strong id="timer">00:00:00</strong></p>
+    </div>
+    <div class="rail" id="deals"></div>
+  </section>
+
+  <section id="destacados" class="block feat">
+    <h2>Destacados</h2>
+    <div class="flow" id="flow" tabindex="0" aria-label="Productos destacados. Usá las flechas del teclado para moverte."></div>
     <div class="info" aria-live="polite">
       <p class="cat" id="iCat"></p>
-      <h2 id="iName"></h2>
-      <p class="desc" id="iDesc"></p>
+      <h3 id="iName"></h3>
       <p class="price" id="iPrice"></p>
       <div class="controls">
-        <button class="round" id="prev" type="button" aria-label="Producto anterior">‹</button>
+        <button class="round" id="prev" type="button" aria-label="Anterior">‹</button>
         <button class="btn" id="add" type="button">Agregar al carrito</button>
-        <button class="round" id="next" type="button" aria-label="Producto siguiente">›</button>
+        <button class="round" id="next" type="button" aria-label="Siguiente">›</button>
       </div>
     </div>
   </section>
 
-  <section id="contacto" class="contact">
+  <section id="productos" class="block">
+    <div class="head">
+      <h2>Todos los productos</h2>
+      <label class="sort">Ordenar por
+        <select id="sort">
+          <option value="rel">Más relevantes</option>
+          <option value="asc">Menor precio</option>
+          <option value="desc">Mayor precio</option>
+          <option value="off">Mayor descuento</option>
+        </select>
+      </label>
+    </div>
+    <p class="results" id="results"></p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="contacto" class="block contact">
     <div>
       <h2>¿Tenés alguna consulta?</h2>
       <p>Escribinos y te respondemos lo antes posible. Hacemos envíos a todo el país.</p>
@@ -60,7 +106,23 @@
   </section>
 </main>
 
-<footer class="foot">© 2026 Mi Tienda. Todos los derechos reservados.</footer>
+<footer class="foot">
+  <div>
+    <strong>Mi Tienda</strong>
+    <p>Tu tienda online de confianza.</p>
+  </div>
+  <div>
+    <strong>Comprar</strong>
+    <a href="#ofertas">Ofertas</a><a href="#productos">Productos</a><a href="#categorias">Categorías</a>
+  </div>
+  <div>
+    <strong>Ayuda</strong>
+    <a href="#contacto">Contacto</a><span>Cambios y devoluciones</span><span>Formas de pago</span>
+  </div>
+  <p class="copy">© 2026 Mi Tienda. Todos los derechos reservados.</p>
+</footer>
+
+<dialog id="modal" aria-label="Detalle del producto"></dialog>
 
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="cart" aria-hidden="true" aria-label="Carrito de compras">
@@ -68,6 +130,7 @@
     <h2>Tu carrito</h2>
     <button class="round" id="closeCart" type="button" aria-label="Cerrar carrito">×</button>
   </div>
+  <p class="ship" id="ship"></p>
   <ul id="items"></ul>
   <div class="drawer-foot">
     <p class="total">Total <strong id="total">$0</strong></p>
@@ -76,7 +139,6 @@
 </aside>
 
 <div class="toast" id="toast" role="status"></div>
-
 <script src="script.js"></script>
 </body>
 </html>

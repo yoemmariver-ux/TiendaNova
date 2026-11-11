@@ -1,72 +1,144 @@
 /* ====== CONFIGURACIÓN: editá estos datos ====== */
 const WHATSAPP = "5493830000000"; // código de país + código de área + número, sin + ni espacios
 const STORE = "Mi Tienda";
+const FREE_SHIPPING = 50000;      // monto desde el cual el envío es gratis
+const CUOTAS = 12;
 
 // Productos de ejemplo. Para agregar uno, copiá una línea y cambiá los datos.
+// "old" es el precio anterior (si no hay descuento, poné el mismo precio).
 // Las imágenes de picsum.photos son aleatorias; reemplazalas por tus fotos (ej: "img/auriculares.jpg").
+const img = n => "https://picsum.photos/seed/tienda-" + n + "/640/640";
 const products = [
-  { id: 1, name: "Auriculares Pulse", cat: "Audio", price: 48900,
-    desc: "Inalámbricos, con 30 horas de batería y micrófono incluido.",
-    img: "https://picsum.photos/seed/tienda-1/640/800" },
-  { id: 2, name: "Mochila Urbana", cat: "Accesorios", price: 32500,
-    desc: "Resistente al agua, con lugar para notebook de 15 pulgadas.",
-    img: "https://picsum.photos/seed/tienda-2/640/800" },
-  { id: 3, name: "Botella Térmica 750 ml", cat: "Hogar", price: 18900,
-    desc: "Mantiene el frío 24 horas y el calor 12 horas. Acero inoxidable.",
-    img: "https://picsum.photos/seed/tienda-3/640/800" },
-  { id: 4, name: "Lámpara de Escritorio", cat: "Hogar", price: 21400,
-    desc: "Luz LED regulable, con base de carga para el celular.",
-    img: "https://picsum.photos/seed/tienda-4/640/800" },
-  { id: 5, name: "Zapatillas Aire", cat: "Calzado", price: 67800,
-    desc: "Livianas y cómodas, ideales para caminar todo el día.",
-    img: "https://picsum.photos/seed/tienda-5/640/800" }
+  { id: 1,  name: "Auriculares Bluetooth Pulse",  cat: "Audio",       price: 48900, old: 69900, rating: 4.7, reviews: 1280, free: true,  feat: true, desc: "Inalámbricos, con 30 horas de batería, cancelación de ruido y micrófono incluido.", img: img(1) },
+  { id: 2,  name: "Mochila Urbana Impermeable",   cat: "Accesorios",  price: 32500, old: 41900, rating: 4.5, reviews: 860,  free: true,  feat: true, desc: "Resistente al agua, con lugar para notebook de 15 pulgadas y puerto USB.", img: img(2) },
+  { id: 3,  name: "Botella Térmica 750 ml",       cat: "Hogar",       price: 18900, old: 18900, rating: 4.8, reviews: 2310, free: false, desc: "Mantiene el frío 24 horas y el calor 12 horas. Acero inoxidable.", img: img(3) },
+  { id: 4,  name: "Lámpara LED de Escritorio",    cat: "Hogar",       price: 21400, old: 29900, rating: 4.4, reviews: 410,  free: false, desc: "Luz regulable en tres tonos, con base de carga inalámbrica para el celular.", img: img(4) },
+  { id: 5,  name: "Zapatillas Aire",              cat: "Calzado",     price: 67800, old: 89900, rating: 4.6, reviews: 1950, free: true,  feat: true, desc: "Livianas y cómodas, ideales para caminar todo el día.", img: img(5) },
+  { id: 6,  name: "Parlante Bluetooth Mini",      cat: "Audio",       price: 25900, old: 38900, rating: 4.3, reviews: 740,  free: false, feat: true, desc: "Resistente al agua, 12 horas de música y sonido potente.", img: img(6) },
+  { id: 7,  name: "Smartwatch Fit",               cat: "Tecnología",  price: 54900, old: 79900, rating: 4.5, reviews: 1120, free: true,  feat: true, desc: "Mide pasos, sueño y ritmo cardíaco. Recibí notificaciones en la muñeca.", img: img(7) },
+  { id: 8,  name: "Teclado Mecánico Compacto",    cat: "Tecnología",  price: 39900, old: 52900, rating: 4.6, reviews: 530,  free: false, desc: "Switches rojos, retroiluminado y conexión por cable o Bluetooth.", img: img(8) },
+  { id: 9,  name: "Cargador Rápido 30 W",         cat: "Tecnología",  price: 12900, old: 12900, rating: 4.7, reviews: 3020, free: false, desc: "Carga tu celular al 50 % en 30 minutos. Incluye cable USB-C.", img: img(9) },
+  { id: 10, name: "Riñonera Compacta",            cat: "Accesorios",  price: 14500, old: 19900, rating: 4.2, reviews: 290,  free: false, desc: "Tres compartimentos con cierre y correa ajustable.", img: img(10) },
+  { id: 11, name: "Set de Sartenes x3 Antiadherentes", cat: "Hogar",  price: 44900, old: 62900, rating: 4.6, reviews: 970,  free: false, desc: "Aptas para todas las cocinas, incluida la inducción. Mango de silicona.", img: img(11) },
+  { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12) }
+];
+const slides = [
+  { t: "Ofertas de primavera", p: "Hasta 40 % de descuento en audio, hogar y tecnología.", cta: "Ver ofertas", href: "#ofertas", img: "https://picsum.photos/seed/banner-1/1600/600" },
+  { t: "12 cuotas sin interés", p: "En todos los productos, con tarjeta de crédito.", cta: "Ver productos", href: "#productos", img: "https://picsum.photos/seed/banner-2/1600/600" },
+  { t: "Envío gratis en todo el país", p: "En compras desde $50.000. Llegamos hasta tu casa.", cta: "Elegir productos", href: "#destacados", img: "https://picsum.photos/seed/banner-3/1600/600" }
 ];
 /* ================================================ */
 
 const $ = s => document.querySelector(s);
 const money = n => n.toLocaleString("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
 const byId = id => products.find(p => p.id === Number(id));
+const off = p => Math.round((1 - p.price / p.old) * 100);
+const norm = s => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const stars = r => "★".repeat(Math.round(r)) + "☆".repeat(5 - Math.round(r));
 
-let cur = 2;            // producto en el centro
-let cart = {};          // { idProducto: cantidad }
+let cart = {};
 try { cart = JSON.parse(localStorage.getItem("cart") || "{}"); } catch (e) { cart = {}; }
 const save = () => { try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (e) {} };
 
-/* ---------- Galería 3D ---------- */
-const flow = $("#flow");
-let sx = null, moved = false;
+/* ---------- Banner ---------- */
+const hero = $("#hero");
+hero.innerHTML = slides.map((s, i) =>
+  `<div class="slide${i ? "" : " on"}" style="background-image:url('${s.img}')"><div>
+    <h1>${s.t}</h1><p>${s.p}</p><a class="btn" href="${s.href}" style="text-decoration:none;display:inline-block">${s.cta}</a>
+  </div></div>`).join("") +
+  `<div class="dots">${slides.map((s, i) => `<button type="button" aria-label="Ir a la promoción ${i + 1}" aria-current="${i === 0}"></button>`).join("")}</div>`;
+let si = 0, st;
+function showSlide(i) {
+  si = (i + slides.length) % slides.length;
+  hero.querySelectorAll(".slide").forEach((el, k) => el.classList.toggle("on", k === si));
+  hero.querySelectorAll(".dots button").forEach((el, k) => el.setAttribute("aria-current", k === si));
+}
+hero.querySelectorAll(".dots button").forEach((b, k) => b.addEventListener("click", () => { showSlide(k); autoplay(); }));
+function autoplay() {
+  clearInterval(st);
+  if (!matchMedia("(prefers-reduced-motion: reduce)").matches) st = setInterval(() => showSlide(si + 1), 5500);
+}
+hero.addEventListener("mouseenter", () => clearInterval(st));
+hero.addEventListener("mouseleave", autoplay);
+autoplay();
 
-const cards = products.map((p, i) => {
-  const b = document.createElement("button");
-  b.className = "card";
-  b.type = "button";
-  b.setAttribute("aria-label", p.name);
-  const img = document.createElement("img");
-  img.src = p.img; img.alt = p.name; img.loading = i < 3 ? "eager" : "lazy"; img.draggable = false;
-  b.appendChild(img);
-  b.addEventListener("click", () => { if (!moved) go(i); });
-  flow.appendChild(b);
-  return b;
-});
-
-function go(i) {
-  cur = Math.max(0, Math.min(products.length - 1, i));
-  cards.forEach((c, k) => {
-    const o = k - cur, a = Math.abs(o);
-    c.style.setProperty("--o", o);
-    c.style.setProperty("--a", a);
-    c.classList.toggle("on", a === 0);
-    c.dataset.far = a > 2 ? "1" : "";
-  });
-  const p = products[cur];
-  $("#iCat").textContent = p.cat;
-  $("#iName").textContent = p.name;
-  $("#iDesc").textContent = p.desc;
-  $("#iPrice").textContent = money(p.price);
-  $("#prev").disabled = cur === 0;
-  $("#next").disabled = cur === products.length - 1;
+/* ---------- Tarjeta de producto ---------- */
+function card(p) {
+  const d = off(p);
+  return `<article class="card">
+    <button class="pic" data-open="${p.id}" aria-label="Ver ${p.name}"><img src="${p.img}" alt="${p.name}" loading="lazy"></button>
+    <div class="body">
+      ${d > 0 ? `<span class="badge">${d}% OFF</span>` : ""}
+      <button class="name" data-open="${p.id}">${p.name}</button>
+      ${d > 0 ? `<span class="old">${money(p.old)}</span>` : ""}
+      <span class="now">${money(p.price)}${d > 0 ? `<span class="off">${d}% OFF</span>` : ""}</span>
+      <span class="cuotas">${CUOTAS} cuotas de ${money(Math.round(p.price / CUOTAS))} sin interés</span>
+      ${p.free || p.price >= FREE_SHIPPING ? `<span class="free">Envío gratis</span>` : ""}
+      <span class="stars" aria-label="Calificación ${p.rating} de 5">${stars(p.rating)}<small>(${p.reviews})</small></span>
+      <button class="btn mt" data-add="${p.id}">Agregar al carrito</button>
+    </div></article>`;
 }
 
+/* ---------- Categorías, ofertas, grilla ---------- */
+const cats = ["Todos", ...new Set(products.map(p => p.cat))];
+let state = { cat: "Todos", q: "", sort: "rel" };
+
+$("#cats").innerHTML = cats.map(c => `<button class="chip" type="button" data-cat="${c}" aria-pressed="${c === "Todos"}">${c}</button>`).join("");
+$("#deals").innerHTML = products.filter(p => off(p) >= 25).sort((a, b) => off(b) - off(a)).slice(0, 7).map(card).join("");
+
+function renderGrid() {
+  let list = products.filter(p =>
+    (state.cat === "Todos" || p.cat === state.cat) &&
+    (!state.q || norm(p.name + " " + p.cat).includes(norm(state.q))));
+  if (state.sort === "asc") list.sort((a, b) => a.price - b.price);
+  if (state.sort === "desc") list.sort((a, b) => b.price - a.price);
+  if (state.sort === "off") list.sort((a, b) => off(b) - off(a));
+  $("#results").textContent = list.length + (list.length === 1 ? " resultado" : " resultados");
+  $("#grid").innerHTML = list.length ? list.map(card).join("")
+    : '<p class="results">No encontramos productos con esa búsqueda. Probá con otra palabra o elegí una categoría.</p>';
+  document.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", c.dataset.cat === state.cat));
+}
+$("#cats").addEventListener("click", e => {
+  const b = e.target.closest("[data-cat]"); if (!b) return;
+  state.cat = b.dataset.cat; renderGrid();
+  $("#productos").scrollIntoView();
+});
+$("#sort").addEventListener("change", e => { state.sort = e.target.value; renderGrid(); });
+$("#searchForm").addEventListener("submit", e => {
+  e.preventDefault(); state.q = $("#q").value.trim(); state.cat = "Todos"; renderGrid();
+  $("#productos").scrollIntoView();
+});
+
+/* Cuenta regresiva: las ofertas "terminan" a medianoche */
+function tick() {
+  const n = new Date(), end = new Date(n); end.setHours(24, 0, 0, 0);
+  const s = Math.floor((end - n) / 1000), z = v => String(v).padStart(2, "0");
+  $("#timer").textContent = z(Math.floor(s / 3600)) + ":" + z(Math.floor(s % 3600 / 60)) + ":" + z(s % 60);
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- Destacados 3D ---------- */
+const feats = products.filter(p => p.feat);
+const flow = $("#flow");
+let cur = 2, sx = null, moved = false;
+const fcards = feats.map((p, i) => {
+  const b = document.createElement("button");
+  b.className = "fc"; b.type = "button"; b.setAttribute("aria-label", p.name);
+  b.innerHTML = `<img src="${p.img}" alt="${p.name}" draggable="false">`;
+  b.addEventListener("click", () => { if (!moved) go(i); });
+  flow.appendChild(b); return b;
+});
+function go(i) {
+  cur = Math.max(0, Math.min(feats.length - 1, i));
+  fcards.forEach((c, k) => {
+    const o = k - cur, a = Math.abs(o);
+    c.style.setProperty("--o", o); c.style.setProperty("--a", a);
+    c.dataset.far = a > 2 ? "1" : "";
+  });
+  const p = feats[cur];
+  $("#iCat").textContent = p.cat; $("#iName").textContent = p.name; $("#iPrice").textContent = money(p.price);
+  $("#prev").disabled = cur === 0; $("#next").disabled = cur === feats.length - 1;
+}
 flow.addEventListener("pointerdown", e => { sx = e.clientX; moved = false; });
 flow.addEventListener("pointerup", e => {
   if (sx === null) return;
@@ -79,14 +151,48 @@ flow.addEventListener("keydown", e => {
 });
 $("#prev").addEventListener("click", () => go(cur - 1));
 $("#next").addEventListener("click", () => go(cur + 1));
+$("#add").addEventListener("click", () => add(feats[cur].id));
+
+/* ---------- Detalle del producto ---------- */
+const modal = $("#modal");
+function openDetail(id) {
+  const p = byId(id), d = off(p);
+  modal.innerHTML = `<div class="det">
+    <button class="round x" data-close aria-label="Cerrar">×</button>
+    <img src="${p.img}" alt="${p.name}">
+    <div class="txt">
+      <p class="cat">${p.cat}</p>
+      <h2>${p.name}</h2>
+      <span class="stars">${stars(p.rating)}<small>(${p.reviews} opiniones)</small></span>
+      ${d > 0 ? `<span class="old">${money(p.old)}</span>` : ""}
+      <span class="now">${money(p.price)}${d > 0 ? `<span class="off">${d}% OFF</span>` : ""}</span>
+      <span class="cuotas">${CUOTAS} cuotas de ${money(Math.round(p.price / CUOTAS))} sin interés</span>
+      ${p.free || p.price >= FREE_SHIPPING ? `<span class="free">Envío gratis</span>` : ""}
+      <p class="d">${p.desc}</p>
+      <div class="acts">
+        <button class="btn" data-buy="${p.id}">Comprar ahora</button>
+        <button class="btn alt" data-add="${p.id}">Agregar al carrito</button>
+      </div></div></div>`;
+  modal.showModal();
+}
+modal.addEventListener("click", e => {
+  if (e.target === modal || e.target.closest("[data-close]")) modal.close();
+  const buy = e.target.closest("[data-buy]");
+  if (buy) { add(buy.dataset.buy, true); modal.close(); openCart(true); }
+});
+
+/* Clics en tarjetas (grilla y ofertas) */
+document.addEventListener("click", e => {
+  const o = e.target.closest("[data-open]"); if (o) return openDetail(o.dataset.open);
+  const a = e.target.closest(".card [data-add], dialog [data-add]"); if (a) add(a.dataset.add);
+});
 
 /* ---------- Carrito ---------- */
-function add(id) {
+function add(id, silent) {
   cart[id] = (cart[id] || 0) + 1;
   save(); renderCart();
-  toast(byId(id).name + " se agregó al carrito");
+  if (!silent) toast(byId(id).name + " se agregó al carrito");
 }
-
 function renderCart() {
   const ids = Object.keys(cart).filter(id => cart[id] > 0 && byId(id));
   let units = 0, total = 0;
@@ -106,11 +212,12 @@ function renderCart() {
   $("#count").textContent = units;
   $("#total").textContent = money(total);
   $("#checkout").disabled = !ids.length;
+  $("#ship").textContent = !ids.length ? "Envío gratis en compras desde " + money(FREE_SHIPPING)
+    : total >= FREE_SHIPPING ? "¡Tu compra tiene envío gratis!"
+    : "Te faltan " + money(FREE_SHIPPING - total) + " para tener envío gratis";
 }
-
 $("#items").addEventListener("click", e => {
-  const b = e.target.closest("button[data-act]");
-  if (!b) return;
+  const b = e.target.closest("button[data-act]"); if (!b) return;
   const id = b.dataset.id;
   if (b.dataset.act === "inc") cart[id]++;
   if (b.dataset.act === "dec") cart[id]--;
@@ -118,9 +225,6 @@ $("#items").addEventListener("click", e => {
   if (cart[id] <= 0) delete cart[id];
   save(); renderCart();
 });
-
-$("#add").addEventListener("click", () => add(products[cur].id));
-
 function openCart(open) {
   $("#cart").classList.toggle("open", open);
   $("#overlay").classList.toggle("open", open);
@@ -135,19 +239,14 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") openCart(fal
 function sendWhatsApp(text) {
   window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
 }
-
 $("#checkout").addEventListener("click", () => {
-  const ids = Object.keys(cart);
   let total = 0;
-  const lines = ids.map(id => {
-    const p = byId(id), q = cart[id];
-    total += p.price * q;
+  const lines = Object.keys(cart).map(id => {
+    const p = byId(id), q = cart[id]; total += p.price * q;
     return "• " + q + " × " + p.name + " (" + money(p.price * q) + ")";
   });
   sendWhatsApp("Hola, quiero hacer este pedido en " + STORE + ":\n" + lines.join("\n") + "\nTotal: " + money(total));
 });
-
-/* ---------- Contacto ---------- */
 $("#contactForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = new FormData(e.target);
@@ -155,15 +254,13 @@ $("#contactForm").addEventListener("submit", e => {
   e.target.reset();
 });
 
-/* ---------- Aviso ---------- */
-let t;
+let tt;
 function toast(msg) {
   const el = $("#toast");
-  el.textContent = msg;
-  el.classList.add("show");
-  clearTimeout(t);
-  t = setTimeout(() => el.classList.remove("show"), 2200);
+  el.textContent = msg; el.classList.add("show");
+  clearTimeout(tt); tt = setTimeout(() => el.classList.remove("show"), 2200);
 }
 
 go(cur);
+renderGrid();
 renderCart();
