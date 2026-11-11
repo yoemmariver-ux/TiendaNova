@@ -241,7 +241,7 @@ a.btn{text-decoration:none;text-align:center;display:block}
 }
 
 /* ========================================================
-   LOGO ANIMADO EN CABECERA BLANCA (Sin bordes ni artefactos)
+   LOGO ANIMADO SOBRE FONDO BLANCO (Fondo negro transparente)
    ======================================================== */
 .logo-link {
   display: flex;
@@ -254,6 +254,7 @@ a.btn{text-decoration:none;text-align:center;display:block}
   width: auto;
   object-fit: contain;
   background: transparent;
+  mix-blend-mode: screen; /* MAGIA: Hace que el fondo negro del video desaparezca contra el blanco */
   padding: 0;
   margin: -6px 0;
 }
