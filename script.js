@@ -22,7 +22,16 @@ const products = [
   { id: 9,  name: "Cargador Rápido 30 W",         cat: "Tecnología",  price: 12900, old: 12900, rating: 4.7, reviews: 3020, free: false, desc: "Carga tu celular al 50 % en 30 minutos. Incluye cable USB-C.", img: img(9), mp: "" },
   { id: 10, name: "Riñonera Compacta",            cat: "Accesorios",  price: 14500, old: 19900, rating: 4.2, reviews: 290,  free: false, desc: "Tres compartimentos con cierre y correa ajustable.", img: img(10), mp: "" },
   { id: 11, name: "Set de Sartenes x3 Antiadherentes", cat: "Hogar",  price: 44900, old: 62900, rating: 4.6, reviews: 970,  free: false, desc: "Aptas para todas las cocinas, incluida la inducción. Mango de silicona.", img: img(11), mp: "" },
-  { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12), mp: "" }
+  { id: 12, name: "Zapatillas Trail",             cat: "Calzado",     price: 59900, old: 59900, rating: 4.5, reviews: 380,  free: true,  desc: "Suela con agarre para caminos de tierra y senderos.", img: img(12), mp: "" },
+
+  // ----- Indumentaria Estilo Bakano -----
+  // Las fotos van en la carpeta img del repositorio. El nombre debe coincidir EXACTO con el del archivo.
+  // Cambiá nombres, precios y descripciones por los reales.
+  // rating: 0 y reviews: 0 ocultan las estrellas (poné valores reales solo cuando tengan opiniones reales).
+  { id: 13, name: "Remera Oversize Negra", cat: "Indumentaria Estilo Bakano", price: 15900, old: 15900, rating: 0, reviews: 0, free: false, desc: "Algodón peinado, corte holgado y estampa frontal. Disponible en varios talles.", img: "img/remera-oversize-negra.jpg", mp: "" },
+  { id: 14, name: "Buzo Canguro Estilo Bakano", cat: "Indumentaria Estilo Bakano", price: 32900, old: 32900, rating: 0, reviews: 0, free: false, desc: "Frisa invisible, capucha doble y bolsillo canguro.", img: "img/buzo-canguro.jpg", mp: "" },
+  { id: 15, name: "Jean Cargo", cat: "Indumentaria Estilo Bakano", price: 38900, old: 38900, rating: 0, reviews: 0, free: false, desc: "Tiro medio, bolsillos laterales y calce relajado.", img: "img/jean-cargo.jpg", mp: "" },
+  { id: 16, name: "Gorra Bakano", cat: "Indumentaria Estilo Bakano", price: 9900, old: 9900, rating: 0, reviews: 0, free: false, desc: "Visera curva, regulable y con bordado frontal.", img: "img/gorra-bakano.jpg", mp: "" }
 ];
 const slides = [
   { t: "Ofertas de primavera", p: "Hasta 40 % de descuento en audio, hogar y tecnología.", cta: "Ver ofertas", href: "#ofertas", img: "https://picsum.photos/seed/banner-1/1600/600" },
@@ -41,6 +50,13 @@ const stars = r => "★".repeat(Math.round(r)) + "☆".repeat(5 - Math.round(r))
 let cart = {};
 try { cart = JSON.parse(localStorage.getItem("cart") || "{}"); } catch (e) { cart = {}; }
 const save = () => { try { localStorage.setItem("cart", JSON.stringify(cart)); } catch (e) {} };
+
+/* Si una foto no carga (por ejemplo, todavía no la subiste), se muestra un cuadro gris */
+const PLACEHOLDER = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><rect width="400" height="400" fill="#ececec"/><text x="200" y="205" font-family="sans-serif" font-size="22" fill="#888" text-anchor="middle">Foto próximamente</text></svg>');
+document.addEventListener("error", e => {
+  const t = e.target;
+  if (t.tagName === "IMG" && !t.dataset.fb) { t.dataset.fb = "1"; t.src = PLACEHOLDER; }
+}, true);
 
 /* ---------- Banner ---------- */
 const hero = $("#hero");
@@ -76,7 +92,7 @@ function card(p) {
       <span class="now">${money(p.price)}${d > 0 ? `<span class="off">${d}% OFF</span>` : ""}</span>
       <span class="cuotas">${CUOTAS} cuotas de ${money(Math.round(p.price / CUOTAS))} sin interés</span>
       ${p.free || p.price >= FREE_SHIPPING ? `<span class="free">Envío gratis</span>` : ""}
-      <span class="stars" aria-label="Calificación ${p.rating} de 5">${stars(p.rating)}<small>(${p.reviews})</small></span>
+      ${p.reviews > 0 ? `<span class="stars" aria-label="Calificación ${p.rating} de 5">${stars(p.rating)}<small>(${p.reviews})</small></span>` : ""}
       <button class="btn mt" data-add="${p.id}">Agregar al carrito</button>
     </div></article>`;
 }
@@ -165,7 +181,7 @@ function openDetail(id) {
     <div class="txt">
       <p class="cat">${p.cat}</p>
       <h2>${p.name}</h2>
-      <span class="stars">${stars(p.rating)}<small>(${p.reviews} opiniones)</small></span>
+      ${p.reviews > 0 ? `<span class="stars">${stars(p.rating)}<small>(${p.reviews} opiniones)</small></span>` : ""}
       ${d > 0 ? `<span class="old">${money(p.old)}</span>` : ""}
       <span class="now">${money(p.price)}${d > 0 ? `<span class="off">${d}% OFF</span>` : ""}</span>
       <span class="cuotas">${CUOTAS} cuotas de ${money(Math.round(p.price / CUOTAS))} sin interés</span>
@@ -242,6 +258,7 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") openCart(fal
 function sendWhatsApp(text) {
   window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text), "_blank", "noopener");
 }
+
 /* ---------- Comprobante de compra (no es una factura) ---------- */
 const receipt = $("#receipt");
 let order = null;
@@ -292,6 +309,7 @@ receipt.addEventListener("click", e => {
     toast("Pedido enviado. ¡Gracias por tu compra!");
   }
 });
+
 $("#contactForm").addEventListener("submit", e => {
   e.preventDefault();
   const f = new FormData(e.target);
